@@ -14,7 +14,7 @@ public class TestController {
 
 
     @GetMapping("/cdtest")
-    public String test(){
+    public String cdtest(){
         return "CD 환경 구축 테스트 중. \n새로운 컨트롤러가 업데이트 되었습니다." +
                 "\n이 메세지가 보인다면 성공입니다.";
     }
