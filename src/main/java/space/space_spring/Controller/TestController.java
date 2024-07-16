@@ -1,39 +1,50 @@
-package space.space_spring.Controller;
+package space.space_spring.controller;
 
-import lombok.Value;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import space.space_spring.argument_resolver.JwtPreAuth;
 import space.space_spring.config.testConfig;
+import space.space_spring.response.BaseResponse;
 
 @RestController
+@Slf4j
 public class TestController {
     private testConfig testEnv;
     @Autowired
     public TestController(testConfig testEnv) {
         this.testEnv = testEnv;
     }
-//    @Autowired
-//    private testConfig testEnv;
-//    @Value("${test.env}")
-//    private String testEnv;
-//    @Value("${secret.jwt-secret-key}")
-//    private String gwtKey;
+    @Value("${secret.jwt-secret-key}")
+    private String JWT_SECRET_KEY;
+    @Value("${secret.jwt-expired-in}")
+    private Long JWT_EXPIRED_IN;
+
+
+    @Value("${spring.datasource.url}")
+    private String DB_URL;
 
     @GetMapping("/testEnv")
     public String testEndpoint() {
-        return "Test Environment Value: " + testEnv;
+        return "Test Environment Value: "+testEnv.getEnv() ;
+    }
+
+    @GetMapping("/testEnvSec")
+    public String testSecretENVEndpoint() {
+        return "Test <br>JWT_SECRET_KEY: "+JWT_SECRET_KEY
+                +"<br>JWT_EXPIRED_IN: "+JWT_EXPIRED_IN+
+                "<br>DB URL: "+DB_URL;
     }
     @GetMapping("/test")
     public String test(){
         return "CI/CD 환경 구축 테스트 중. 이 메세지가 보인다면 성공입니다";
     }
 
-
-    @GetMapping("/cdtest")
-    public String cdtest(){
-        return "CD 환경 구축 테스트 중. \n새로운 컨트롤러가 업데이트 되었습니다." +
-                "\n이 메세지가 보인다면 성공입니다.";
+    @GetMapping("/test/jwt")
+    public BaseResponse<String> jwtTest(@JwtPreAuth Long userId) {
+        log.info("userId = {}", userId);
+        return new BaseResponse<>("jwt test 성공");
     }
 }
