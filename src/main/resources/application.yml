@@ -24,7 +24,7 @@ spring:
 
 secret:
   jwt-secret-key: ${JWT_SECRET_KEY}
-  jwt-expired-in: ${JWT_EXPIRED_IN}
+  jwt-expired-in: ${JWT_EXPIRED_IN:240000000}
 
 logging:
   level:
