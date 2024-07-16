@@ -18,10 +18,10 @@ public class TestController {
 //    private testConfig testEnv;
 //    @Value("${test.env}")
 //    private String testEnv;
-    @Value("${secret.jwt-secret-key}")
-    private String gwtKey;
+//    @Value("${secret.jwt-secret-key}")
+//    private String gwtKey;
 
-    @GetMapping("/test")
+    @GetMapping("/testEnv")
     public String testEndpoint() {
         return "Test Environment Value: " + testEnv;
     }
