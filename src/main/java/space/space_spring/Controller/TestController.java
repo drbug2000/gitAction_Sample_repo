@@ -23,7 +23,7 @@ public class TestController {
 
     @GetMapping("/testEnv")
     public String testEndpoint() {
-        return "Test Environment Value: " + testEnv;
+        return "Test Environment Value: " + testEnv.getEnv();
     }
     @GetMapping("/test")
     public String test(){
