@@ -22,7 +22,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(jwtAuthInterceptor)
                 .order(1)
-                .addPathPatterns("/space/**", "/test/**");          // interceptor 적용되야하는 url enum으로 만들어서 여기에 달면 될듯
+                .addPathPatterns("/space/**");          // interceptor 적용되야하는 url enum으로 만들어서 여기에 달면 될듯
     }
 
     @Override
