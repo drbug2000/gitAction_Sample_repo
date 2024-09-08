@@ -13,7 +13,6 @@ on:
       - "main"
       - "develop"
       - "deploy"
-      - "chore/**"
   pull_request:
     branches:
       - "develop"
