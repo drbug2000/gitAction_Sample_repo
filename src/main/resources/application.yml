@@ -21,10 +21,21 @@ spring:
         format_sql: true
         show_sql: true
 
+cloud:
+  aws:
+    credentials:
+      access-key: ${S3-ACCESS-KEY}
+      secret-key: ${S3-SECRET-KEY}
+    s3:
+      bucket: project-space-image-storage
+    region:
+      static: ap-northeast-2 # 리전 정보(서울)
+    stack:
+      auto: false
 
 secret:
   jwt-secret-key: ${JWT_SECRET_KEY}
-  jwt-expired-in: ${JWT_EXPIRED_IN:240000000}
+  jwt-expired-in: ${JWT_EXPIRED_IN:360000000}
 
 logging:
   level:
