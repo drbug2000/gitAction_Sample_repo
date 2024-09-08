@@ -44,6 +44,7 @@ public class TestController {
 
     @GetMapping("/test/jwt")
     public BaseResponse<String> jwtTest(@JwtPreAuth Long userId) {
+        //Test 주석
         log.info("userId = {}", userId);
         return new BaseResponse<>("jwt test 성공");
     }
@@ -51,6 +52,8 @@ public class TestController {
     @GetMapping("/test/chore")
     public BaseResponse<String> choreBranchTest(@JwtPreAuth Long userId) {
         log.info("userId = {}", userId);
+
         return new BaseResponse<>("이 글자가 보인다면, chore branch 가 배포 된 것입니다. 테스트 중입니다. 다시 테스트 중입니다");
+
     }
 }
