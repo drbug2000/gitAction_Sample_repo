@@ -44,6 +44,7 @@ public class TestController {
 
     @GetMapping("/test/jwt")
     public BaseResponse<String> jwtTest(@JwtPreAuth Long userId) {
+        //Test 주석
         log.info("userId = {}", userId);
         return new BaseResponse<>("jwt test 성공");
     }
